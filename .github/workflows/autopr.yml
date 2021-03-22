@@ -1,0 +1,56 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      majorVersion:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Major Version e.g. 3.0'
+        required: true
+      targetVersion:
+        description: 'Target Version e.g. 3.0.151471'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  create PR:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: main
+    - id: createBranch
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git branch --set-upstream-to origin action/release${{ github.run_number }}.${{ github.event.inputs.targetVersion }}
+        ./update-version.sh ${{ github.event.inputs.majorVersion }} ${{ github.event.inputs.targetVersion }}
+        git add .
+        git push
+    - name: Create PullRequest
+      id: createPullRequest
+      uses: peter-evans/create-pull-request@v3
+      with:
+        title: Update to verison ${{ github.event.inputs.targetVersion }}
+        body: |
+          - Update ${{ github.event.inputs.majorVesion}} to ${{ github.event.inputs.targetVersion }}
+        branch: action/release${{ github.run_number }}
+        labels: |
+          automated pr
+        reviewers: tsuyoshiushio
+    - name: Check outputs
+      run: |
+          echo "Pull Request Number - ${{ steps.createPullRequest.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.createPullRequest.outputs.pull-request-url }}"
+          
+          
+          
+          
