@@ -32,7 +32,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        sh ./update-version.sh ${{ github.event.inputs.majorVersion }} ${{ github.event.inputs.targetVersion }}
+        ./update-version.sh ${{ github.event.inputs.majorVersion }} ${{ github.event.inputs.targetVersion }}
         git add .
         git commit -m "Update Version ${{ github.event.inputs.targetVersion }}"
     - name: Create PullRequest
