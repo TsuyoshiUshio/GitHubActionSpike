@@ -29,8 +29,8 @@ jobs:
         ref: main
     - id: createBranch
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "azfuncgh@github.com"
+        git config --local user.name "Azure Functions"
         
         ./update-version.sh ${{ github.event.inputs.majorVersion }} ${{ github.event.inputs.targetVersion }}
         git add .
