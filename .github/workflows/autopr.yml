@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Update Version
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -45,6 +45,7 @@ jobs:
         branch: action/release.${{ github.event.inputs.targetVersion }}
         labels: |
           automated pr
+          dependencies
         reviewers: tsuyoshiushio
     - name: Check outputs
       run: |
