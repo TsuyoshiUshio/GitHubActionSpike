@@ -17,6 +17,7 @@ jobs:
       run: |
         git config --local user.email "azfuncgh@github.com"
         git config --local user.name "Azure Functions"
+        git fetch --all
         git checkout -b dev origin/dev
         git merge main
         git tag ${{ github.event.inputs.version }}
