@@ -18,7 +18,7 @@ jobs:
         git fetch
         git merge --allow-unrelated-histories origin/main
         git checkout -b sub origin/sub
-        git merge main
+        git merge origin/main
         git tag ${{ github.event.inputs.version }}
         git push
         git push ${{ github.event.inputs.version }}
