@@ -15,8 +15,6 @@ jobs:
         ref: main
     - id: createBranch
       run: |
-        git config --local user.email "azfuncgh@github.com"
-        git config --local user.name "Azure Functions"
         git fetch
         git pull
         git checkout -b sub origin/sub
