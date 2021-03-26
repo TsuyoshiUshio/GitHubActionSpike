@@ -15,10 +15,9 @@ jobs:
         ref: main
     - id: createBranch
       run: |
-        git fetch
-        git merge --allow-unrelated-histories origin/main
+        git fetch --all --unshallow
         git checkout -b sub origin/sub
-        git merge origin/main
+        git merge main
         git tag ${{ github.event.inputs.version }}
         git push
         git push ${{ github.event.inputs.version }}
