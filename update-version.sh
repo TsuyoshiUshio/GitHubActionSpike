@@ -26,3 +26,4 @@ if [ "$1" == "3.0" ]; then
    echo -e "Updating auto-upgrade files"
    find $DIR/2.0-upgrade -name "*Dockerfile" -exec sed -i "s/\bHOST_VERSION=$1\..*/HOST_VERSION=$2/g" "$0" {} \;
 fi
+
