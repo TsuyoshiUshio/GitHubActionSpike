@@ -10,11 +10,15 @@ jobs:
   release:
     runs-on: windows-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: main
     - id: createBranch
       run: |
         git config --local user.email "azfuncgh@github.com"
         git config --local user.name "Azure Functions"
-        git clone https://github.com/TsuyoshiUshio/GitHubActionSpike.git
+        git fetch
+        git pull
         git checkout -b sub origin/sub
         git merge main
         git tag ${{ github.event.inputs.version }}
