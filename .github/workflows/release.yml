@@ -18,8 +18,8 @@ jobs:
         git config --local user.email "azfuncgh@github.com"
         git config --local user.name "Azure Functions"
         git fetch --all
-        git checkout -b dev origin/dev
-        git merge main --allow-unrelated-histories
+        git checkout -b sub origin/sub
+        git merge main
         git tag ${{ github.event.inputs.version }}
         git push
         git push ${{ github.event.inputs.version }}
