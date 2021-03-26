@@ -23,7 +23,7 @@ jobs:
         git merge main
         git tag ${{ github.event.inputs.version }}
         git push
-        git push ${{ github.event.inputs.version }}
+        git push origin ${{ github.event.inputs.version }}
     - name: Release Drafter
       uses: release-drafter/release-drafter@v5.15.0
       with:
