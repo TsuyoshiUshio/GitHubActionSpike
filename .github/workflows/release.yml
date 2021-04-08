@@ -23,6 +23,10 @@ jobs:
         git merge main
         git tag ${{ github.event.inputs.version }}
         git push
+        if ($lastexitcode -ne 0)
+        {
+          throw "Command-line program failed"
+        }
         git push origin ${{ github.event.inputs.version }}
     - name: Release Drafter
       uses: release-drafter/release-drafter@v5.15.0
