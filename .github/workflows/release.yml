@@ -36,4 +36,4 @@ jobs:
       with:
         tag: ${{ github.event.inputs.version }}
       env:
-        GITHUB_TOKEN: ${{ secrets.secrets.GITHUB_TOKEN }}  
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
