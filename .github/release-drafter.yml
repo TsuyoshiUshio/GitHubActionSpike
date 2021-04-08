@@ -4,17 +4,17 @@ template: |
   # What's Changed
   $CHANGES
 categories:
-  - title: 'Breaking'
-    label: 'type: breaking'
-  - title: 'New'
+  - title: '💣Breaking'
+    label: 'breaking'
+  - title: '🚀New'
     label: 'feature'
-  - title: 'Bug Fixes'
+  - title: '🐛Bug Fixes'
     label: 'bug'
-  - title: 'Maintenance'
+  - title: '🧰Maintenance'
     label: 'maintenance'
-  - title: 'Documentation'
+  - title: '📔Documentation'
     label: 'docs'
-  - title: 'Dependency Updates'
+  - title: '🔗Dependency Updates'
     label: 'dependencies'
 
 version-resolver:
