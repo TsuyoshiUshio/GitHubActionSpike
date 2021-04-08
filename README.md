@@ -5,3 +5,4 @@ Spike GitHub action for enabling automated merge and branch/tags
 
 * A fantastic feature.
 * fixed a bug
+* fixed a big bug
