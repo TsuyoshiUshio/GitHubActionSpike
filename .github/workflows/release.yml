@@ -14,6 +14,8 @@ jobs:
       with:
         ref: main
         fetch-depth: 0
+      env:
+        GITHUB_TOKEN: ${{ secrets.PIPELINE_ADMIN }}
     - id: createBranch
       run: |
         git config --local user.email "action@github.com"
@@ -33,4 +35,4 @@ jobs:
       with:
         tag: ${{ github.event.inputs.version }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PIPELINE_ADMIN }}
