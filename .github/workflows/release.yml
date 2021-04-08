@@ -14,8 +14,7 @@ jobs:
       with:
         ref: main
         fetch-depth: 0
-      env:
-        GITHUB_TOKEN: ${{ secrets.PIPELINE_ADMIN }}
+        token: ${{ secrets.PIPELINE_ADMIN }}
     - id: createBranch
       run: |
         git config --local user.email "action@github.com"
@@ -30,9 +29,10 @@ jobs:
           throw "Command-line program failed"
         }
         git push origin ${{ github.event.inputs.version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.PIPELINE_ADMIN }}  
     - name: Release Drafter
       uses: release-drafter/release-drafter@v5.15.0
       with:
         tag: ${{ github.event.inputs.version }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.PIPELINE_ADMIN }}
+
